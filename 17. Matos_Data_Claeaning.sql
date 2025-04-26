@@ -12,6 +12,8 @@ from layoffs;
 
 -- 1. Remove Duplicates
 
+ 
+
 CREATE TABLE layoffs_staging
 Like layoffs;
 
@@ -23,7 +25,7 @@ Insert layoffs_staging
 Select *
 from layoffs;
 
-
+   --# Now let's check for duplicates
 Select *,
 ROW_NUMBER() OVER(
 PARTITION BY company,industry,total_laid_off,percentage_laid_off,`date`) AS row_num
